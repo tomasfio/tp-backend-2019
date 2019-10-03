@@ -1,5 +1,22 @@
 # TP Backend 2019
 
+# Integrantes
+
+*   Fiorenza, Tomas. Legajo: 42022.
+*   Alice, Mauro. Legajo: 40533.
+
+# Enunciado
+API REST de sitio de venta online
+Se trata de una sistema de gestión de ventas y stock de una distribuidora de golosinas, cuyo alcance para la regularización será :
+Requerimientos funcionales:
+1) ABM de categoría de  productos 
+2) Lista de categorías con sus productos (todas la categorías o solo una categoría filtrada por id)
+3) ABM de productos
+4) Lista de producto ( todos los productos de la colección, un solo producto filtrado por id  o todos lo productos pertenecientes a una categoría).
+
+Para la base de datos usaremos mongoDb y mongoose para ODM/ORM.
+Como framework usaremos express e insomnia como  herramienta para generar las peticiones http.
+
 TP Backend
 1 - Enunciado
 1.1 - Desarrollo
