@@ -1,0 +1,34 @@
+{
+  "name": "tp-backend-2019",
+  "version": "1.0.0",
+  "description": "*   Fiorenza, Tomas. Legajo: 42022.\r *   Alice, Mauro. Legajo: 40533.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src --out-dir dist",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasfio/tp-backend-2019.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomasfio/tp-backend-2019/issues"
+  },
+  "homepage": "https://github.com/tomasfio/tp-backend-2019#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/preset-env": "^7.6.0",
+    "nodemon": "^1.19.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1",
+    "morgan": "^1.9.1"
+  }
+}
