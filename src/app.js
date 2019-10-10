@@ -1,4 +1,4 @@
-import express, {json} from "express";
+import express, {json} from 'express';
 import morgan from 'morgan';
 
 const mongoose = require('mongoose');
@@ -9,7 +9,9 @@ const app = express();
 import CategoriaRouter from "./routes/categoria.routes";
 
 //  Database
-mongoose.connect('mongodb://localhost:27017/node-restapi');
+mongoose.connect('mongodb://localhost/node-restapi',{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+    .then(db=>console.log('db is connected'))
+    .catch(err => console.log(err));
 
 //  Settings
 app.set('port', process.env.PORT || 3000);
