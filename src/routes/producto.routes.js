@@ -7,6 +7,7 @@ router.get('/',producto.index);
 router.post('/',producto.newProducto);
 
 router.get('/:id',producto.getProducto);
-
+router.put('/:id',producto.updateProducto);
+router.delete('/:id',producto.deleteProducto);
 
 export default router;
