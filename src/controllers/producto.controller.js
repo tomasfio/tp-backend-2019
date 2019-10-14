@@ -1,16 +1,24 @@
 const prodModel = require('../models/producto.model');
+const catModel = require('../models/categoria.model');
 
 module.exports= {
 
     index: async (req, res) => {
-        const result = await prodModel.find({});
-        res.status(200).json({"Productos": result});
+        prodModel.find({})
+        .then(productos => catModel.populate(productos, {path: "categoria"})
+            .then(productos => res.status(200).json({"Productos": productos}))
+            .catch(err => res.json({"message": "Hubo un error", "err": err})))
+        .catch(err => res.json({"message": "Hubo un error", "err" : err}));
     },
 
     getProducto: async (req, res) => {
         const {id} = req.params;
-        const result = await prodModel.findById(id);
-        res.json(result);//sin status ??
+        prodModel.findById(id)
+        .then(producto => catModel.populate(producto, {path: "categoria"})
+            .then(producto => res.status(200).json(producto))
+            .catch(err => res.json({"message": "Hubo un error", "err": err})))
+        .catch(err => res.json({"message": "Hubo un error", "err": err}));
+
     },
 
     newProducto: async (req, res) => {
@@ -34,7 +42,7 @@ module.exports= {
         const result = await prodModel.findByIdAndDelete(id);
 
         res.json({
-            message: `Porducto ${id} eliminado`,
+            message: `Producto ${id} eliminado`,
             result
         });
     },
