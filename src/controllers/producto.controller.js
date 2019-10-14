@@ -47,4 +47,13 @@ module.exports= {
         });
     },
 
+    getProductoByCategoria: async (req,res) => {
+        const {id} = req.params;
+        prodModel.find({categoria: id})
+        .then(productos =>  catModel.populate(productos, {path:"categoria"})
+            .then(productos => res.status(200).json({"Productos": productos}))
+            .catch(err => res.json({"message": "Hubo un error", "err": err})))
+        .catch(err => res.json({"message": "Hubo un error", "err": err}));
+    }
+
 };

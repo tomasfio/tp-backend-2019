@@ -10,4 +10,6 @@ router.get('/:id',producto.getProducto);
 router.put('/:id',producto.updateProducto);
 router.delete('/:id',producto.deleteProducto);
 
+router.get("/categoria/:id", producto.getProductoByCategoria);
+
 export default router;
