@@ -25,4 +25,11 @@ app.use(json());
 app.use('/categoria',CategoriaRouter);
 app.use('/producto',ProductoRouter);
 
+//  Muestra el siguiente mensaje para todas la rutas no definidas
+app.use('*', function(req, res,){
+    res.status(404).json({
+        message: "La ruta ingresada no existe"
+    });
+});
+
 export default app;
