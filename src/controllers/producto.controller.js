@@ -52,7 +52,9 @@ module.exports= {
 
         if(prodDelete.imagePath !== undefined){
             fs.unlink(path.resolve(prodDelete.imagePath), (err) => {
-                res.status(400).json({"message": "Hubo un error al intentar eliminar la imagen", "err" : err});
+                if(err){
+                    res.status(400).json({"message": "Hubo un error al intentar eliminar la imagen", "err" : err});
+                }
             });
         }
 
