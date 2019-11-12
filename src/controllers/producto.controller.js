@@ -39,7 +39,30 @@ module.exports= {
     updateProducto: async (req, res) => {
         const {id} = req.params;
         const updateProd = req.body;
+
+        if(req.file !== undefined){
+            updateProd.imagePath = req.file.path;
+        }
+
         const oldProd = await prodModel.findByIdAndUpdate(id, updateProd);
+
+        if(req.file !== undefined && oldProd.imagePath !== undefined){
+            fs.unlink(path.resolve(oldProd.imagePath), (err) => {
+                if(err){
+                    res.status(400).json({"message": "Hubo un error al intentar actualizar la imagen", "err" : err});
+                }
+            });
+        }
+
+        if(req.file !== undefined){
+            if(oldProd.imagePath !== undefined){
+                fs.unlink(path.resolve(oldProd.imagePath), (err) => {
+                    if(err){
+                        res.status(400).json({"message": "Hubo un error al intentar eliminar la imagen", "err" : err});
+                    }
+                });
+            }
+        }
 
         res.json({
             message: `El producto con el id ${id} se ha actualizado exitosamente`

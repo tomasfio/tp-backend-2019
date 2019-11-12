@@ -8,7 +8,7 @@ router.get('/', producto.index);
 router.post('/', multer.single('image'), producto.newProducto);
 
 router.get('/:id',producto.getProducto);
-router.put('/:id',producto.updateProducto);
+router.put('/:id', multer.single('image'), producto.updateProducto);
 router.delete('/:id',producto.deleteProducto);
 
 router.get("/categoria/:id", producto.getProductoByCategoria);
