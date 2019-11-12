@@ -22,7 +22,12 @@ module.exports= {
     },
 
     newProducto: async (req, res) => {
-        const prodNew = new prodModel(req.body);
+        const newProd = new prodModel(req.body);
+        
+        if(req.file !== undefined){
+            newProd.imagePath = req.file.path;
+        }
+        const prodNew = new prodModel(newProd);
         const result = await prodNew.save();
         res.status(201).json(result);
     },

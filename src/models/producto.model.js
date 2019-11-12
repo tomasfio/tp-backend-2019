@@ -4,6 +4,7 @@ const productoSchema = new mongoose.Schema({
     nombre: String,
     descripcion: String,
     precioUnidad: Number,
+    imagePath: String,
     categoria: {type: mongoose.Schema.Types.ObjectId , ref: 'categoria'}
 });
 
