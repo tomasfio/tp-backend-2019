@@ -1,6 +1,10 @@
 const prodModel = require('../models/producto.model');
 const catModel = require('../models/categoria.model');
 
+import path from "path";
+
+const fs = require('fs');
+
 module.exports= {
 
     index: async (req, res) => {
@@ -44,6 +48,14 @@ module.exports= {
 
     deleteProducto: async (req, res) => {
         const {id} = req.params;
+        const prodDelete = await prodModel.findById(id);
+
+        if(prodDelete.imagePath !== undefined){
+            fs.unlink(path.resolve(prodDelete.imagePath), (err) => {
+                res.status(400).json({"message": "Hubo un error al intentar eliminar la imagen", "err" : err});
+            });
+        }
+
         const result = await prodModel.findByIdAndDelete(id);
 
         res.json({
